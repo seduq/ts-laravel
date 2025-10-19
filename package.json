@@ -1,11 +1,23 @@
 {
     "name": "ts-laravel",
     "author": "Seduq",
-    "description": "This is a Laravel template that ignores Node packages except compiling Typescript into JS files.",
-    "keywords": ["laravel", "php", "typescript"],
     "$schema": "https://json.schemastore.org/package.json",
+    "description": "This is a Laravel template that ignores Node packages except compiling Typescript into JS files.",
+    "keywords": [
+        "laravel",
+        "php",
+        "typescript"
+    ],
+    "packageManager": "bun@1.3.0",
     "private": true,
+    "scripts": {
+        "build": "bun run build:css && bun run build:ts",
+        "build:css": "postcss resources/css/app.css -o public/css/app.css",
+        "build:ts": "tsc"
+    },
     "type": "module",
-    "scripts": {},
-    "devDependencies": {}
+    "devDependencies": {
+    },
+    "dependencies": {
+    }
 }
