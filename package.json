@@ -8,14 +8,16 @@
         "php",
         "typescript"
     ],
-    "packageManager": "bun@1.3.0",
+    "packageManager": "^bun@1.3.0",
     "private": true,
     "scripts": {
         "build": "bun run build:css && bun run build:ts",
         "build:css": "bunx @tailwindcss/cli -i resources/css/app.css -o public/css/app.css",
         "build:ts": "bunx tsc",
         "watch": "bun run build:css && bun run watch:ts",
-        "watch:ts": "bunx tsc --watch"
+        "watch:ts": "bunx tsc --watch",
+        "test": "bun run test:ts",
+        "test:ts": "bunx tsc tsconfig.build.json"
     },
     "type": "module",
     "devDependencies": {
