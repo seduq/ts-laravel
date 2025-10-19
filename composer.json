@@ -40,11 +40,28 @@
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
-            "@php artisan migrate --force"
+            "@php artisan migrate --force",
+            "bun install",
+            "bun run build"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "@php artisan serve"
+            "bash -c 'bun run watch & php artisan serve'"
+        ],
+        "dev:watch": "bun run watch",
+        "dev:serve": "@php artisan serve",
+        "prod": "bash -c 'php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=8000'",
+        "prod:build": "bun run build",
+        "prod:cache": [
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache"
+        ],
+        "prod:clear": [
+            "@php artisan config:clear",
+            "@php artisan route:clear",
+            "@php artisan view:clear",
+            "@php artisan cache:clear"
         ],
         "test": [
             "@php artisan config:clear --ansi",
